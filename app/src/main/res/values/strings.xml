@@ -1,3 +1,55 @@
 <resources>
-    <string name="app_name">music</string>
+    <string name="app_name">Aura Music</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_library">Library</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_favorites">Favorites</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Home -->
+    <string name="home_welcome">Welcome Back</string>
+    <string name="home_featured">Bundled Tracks</string>
+    <string name="home_quick_play">Quick Play</string>
+
+    <!-- Library -->
+    <string name="tab_all_songs">All Songs</string>
+    <string name="tab_favorites">Favorites</string>
+    <string name="tab_playlists">Playlists</string>
+    <string name="create_playlist">Create Playlist</string>
+    <string name="playlist_name_hint">Playlist Name</string>
+    <string name="cancel">Cancel</string>
+    <string name="create">Create</string>
+    <string name="delete">Delete</string>
+    <string name="add_to_playlist">Add to Playlist</string>
+    <string name="remove_from_playlist">Remove from Playlist</string>
+    <string name="select_playlist">Select Playlist</string>
+
+    <!-- Search -->
+    <string name="search_hint">Search songs, artists, albums...</string>
+    <string name="no_search_results">No matching songs found</string>
+
+    <!-- Empty States -->
+    <string name="empty_catalog_title">No Bundled Songs Yet</string>
+    <string name="empty_catalog_desc">Place MP3 files in res/raw/ and add metadata to MusicCatalog.kt to start playing music.</string>
+    <string name="empty_favorites_title">No Favorites Yet</string>
+    <string name="empty_favorites_desc">Tap the heart icon on any song to add it to your favorites.</string>
+    <string name="empty_playlists_title">No Playlists Yet</string>
+    <string name="empty_playlists_desc">Create custom playlists and organize your favorite music.</string>
+
+    <!-- Now Playing -->
+    <string name="now_playing">Now Playing</string>
+    <string name="queue_title">Up Next</string>
+    <string name="unknown_song">Unknown Song</string>
+    <string name="unknown_artist">Unknown Artist</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="theme_section">Appearance</string>
+    <string name="theme_system">System Default</string>
+    <string name="theme_light">Light Theme</string>
+    <string name="theme_dark">Dark Theme</string>
+    <string name="developer_guide_title">How to Add Music Files</string>
+    <string name="developer_guide_desc">1. Copy your .mp3 file into `app/src/main/res/raw/`.\n2. Open `MusicCatalog.kt`.\n3. Add a `Song(...)` entry referencing `R.raw.your_song`.\n4. Rebuild and launch the app!</string>
 </resources>
