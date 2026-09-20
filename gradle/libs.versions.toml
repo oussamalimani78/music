@@ -9,6 +9,10 @@ appcompat = "1.7.1"
 material = "1.13.0"
 activity = "1.8.2"
 constraintlayout = "2.2.1"
+lifecycle = "2.7.0"
+fragment = "1.6.2"
+gson = "2.10.1"
+media3 = "1.2.1"
 
 [libraries]
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
