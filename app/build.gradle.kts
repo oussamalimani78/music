@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.gson)
+    implementation(libs.play.services.ads)
 
     // Media3 ExoPlayer & Session
     implementation(libs.androidx.media3.exoplayer)
