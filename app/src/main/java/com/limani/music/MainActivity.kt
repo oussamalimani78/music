@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -32,10 +33,13 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: MainViewModel by viewModels {
-        val app = application as MusicApplication
-        MainViewModelFactory(app.repository, app.playerController)
-    }
+    override val defaultViewModelProviderFactory: ViewModelProvider.Factory
+        get() {
+            val app = application as MusicApplication
+            return MainViewModelFactory(app.repository, app.playerController)
+        }
+
+    private val viewModel: MainViewModel by viewModels()
 
     private var activeFragmentTag = TAG_HOME
 
