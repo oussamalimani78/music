@@ -47,15 +47,28 @@ class SongAdapter(
                 imgAlbumArt.clearColorFilter()
             } else {
                 imgAlbumArt.setImageResource(R.drawable.ic_music_note)
+                imgAlbumArt.setColorFilter(
+                    com.google.android.material.color.MaterialColors.getColor(
+                        itemView,
+                        androidx.appcompat.R.attr.colorPrimary
+                    )
+                )
             }
+
+            val onSurfaceVariantColor = com.google.android.material.color.MaterialColors.getColor(
+                itemView,
+                com.google.android.material.R.attr.colorOnSurfaceVariant
+            )
 
             if (song.isFavorite) {
                 btnFavorite.setImageResource(R.drawable.ic_heart_filled)
                 btnFavorite.setColorFilter(ContextCompat.getColor(itemView.context, R.color.accent_heart))
             } else {
                 btnFavorite.setImageResource(R.drawable.ic_heart_outline)
-                btnFavorite.clearColorFilter()
+                btnFavorite.setColorFilter(onSurfaceVariantColor)
             }
+
+            btnMore.setColorFilter(onSurfaceVariantColor)
 
             itemView.setOnClickListener { onSongClick(song) }
             btnFavorite.setOnClickListener { onFavoriteClick(song) }

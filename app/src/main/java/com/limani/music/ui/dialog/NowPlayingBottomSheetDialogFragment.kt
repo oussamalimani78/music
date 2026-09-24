@@ -98,14 +98,25 @@ class NowPlayingBottomSheetDialogFragment : BottomSheetDialogFragment() {
                                 imgArtwork.clearColorFilter()
                             } else {
                                 imgArtwork.setImageResource(R.drawable.ic_music_note)
+                                imgArtwork.setColorFilter(
+                                    com.google.android.material.color.MaterialColors.getColor(
+                                        requireView(),
+                                        androidx.appcompat.R.attr.colorPrimary
+                                    )
+                                )
                             }
+
+                            val onSurfaceVariantColor = com.google.android.material.color.MaterialColors.getColor(
+                                requireView(),
+                                com.google.android.material.R.attr.colorOnSurfaceVariant
+                            )
 
                             if (song.isFavorite) {
                                 btnFav.setImageResource(R.drawable.ic_heart_filled)
                                 btnFav.setColorFilter(ContextCompat.getColor(requireContext(), R.color.accent_heart))
                             } else {
                                 btnFav.setImageResource(R.drawable.ic_heart_outline)
-                                btnFav.clearColorFilter()
+                                btnFav.setColorFilter(onSurfaceVariantColor)
                             }
 
                             btnFav.setOnClickListener { viewModel.toggleFavorite(song.id) }
@@ -141,28 +152,40 @@ class NowPlayingBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
                 launch {
                     viewModel.isShuffleEnabled.collectLatest { shuffle ->
-                        if (shuffle) {
-                            btnShuffle.setColorFilter(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primary))
-                        } else {
-                            btnShuffle.setColorFilter(ContextCompat.getColor(requireContext(), R.color.md_theme_light_onSurfaceVariant))
-                        }
+                        val activeColor = com.google.android.material.color.MaterialColors.getColor(
+                            requireView(),
+                            androidx.appcompat.R.attr.colorPrimary
+                        )
+                        val inactiveColor = com.google.android.material.color.MaterialColors.getColor(
+                            requireView(),
+                            com.google.android.material.R.attr.colorOnSurfaceVariant
+                        )
+                        btnShuffle.setColorFilter(if (shuffle) activeColor else inactiveColor)
                     }
                 }
 
                 launch {
                     viewModel.repeatMode.collectLatest { mode ->
+                        val activeColor = com.google.android.material.color.MaterialColors.getColor(
+                            requireView(),
+                            androidx.appcompat.R.attr.colorPrimary
+                        )
+                        val inactiveColor = com.google.android.material.color.MaterialColors.getColor(
+                            requireView(),
+                            com.google.android.material.R.attr.colorOnSurfaceVariant
+                        )
                         when (mode) {
                             Player.REPEAT_MODE_ONE -> {
                                 btnRepeat.setImageResource(R.drawable.ic_repeat_one)
-                                btnRepeat.setColorFilter(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primary))
+                                btnRepeat.setColorFilter(activeColor)
                             }
                             Player.REPEAT_MODE_ALL -> {
                                 btnRepeat.setImageResource(R.drawable.ic_repeat)
-                                btnRepeat.setColorFilter(ContextCompat.getColor(requireContext(), R.color.md_theme_light_primary))
+                                btnRepeat.setColorFilter(activeColor)
                             }
                             else -> {
                                 btnRepeat.setImageResource(R.drawable.ic_repeat)
-                                btnRepeat.setColorFilter(ContextCompat.getColor(requireContext(), R.color.md_theme_light_onSurfaceVariant))
+                                btnRepeat.setColorFilter(inactiveColor)
                             }
                         }
                     }

@@ -35,8 +35,14 @@ class MainActivity : AppCompatActivity() {
 
     override val defaultViewModelProviderFactory: ViewModelProvider.Factory
         get() {
-            val app = application as MusicApplication
-            return MainViewModelFactory(app.repository, app.playerController)
+            val app = (application as? MusicApplication) ?: (applicationContext as? MusicApplication)
+            if (app != null) {
+                return MainViewModelFactory(app.repository, app.playerController)
+            }
+            return MainViewModelFactory(
+                MusicRepositoryImpl(applicationContext),
+                com.limani.music.player.PlayerController(applicationContext)
+            )
         }
 
     private val viewModel: MainViewModel by viewModels()
@@ -153,6 +159,12 @@ class MainActivity : AppCompatActivity() {
                                 miniArtwork.clearColorFilter()
                             } else {
                                 miniArtwork.setImageResource(R.drawable.ic_music_note)
+                                miniArtwork.setColorFilter(
+                                    com.google.android.material.color.MaterialColors.getColor(
+                                        miniArtwork,
+                                        androidx.appcompat.R.attr.colorPrimary
+                                    )
+                                )
                             }
                         } else {
                             miniCard.visibility = View.GONE
