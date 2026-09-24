@@ -8,9 +8,11 @@
     android:layout_marginHorizontal="12dp"
     android:layout_marginBottom="8dp"
     android:visibility="gone"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="6dp"
-    app:strokeWidth="0dp"
+    app:cardBackgroundColor="?attr/colorSurfaceVariant"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="?attr/colorPrimaryContainer"
     tools:visibility="visible">
 
     <LinearLayout
@@ -18,12 +20,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Linear Progress Bar -->
+        <!-- Top Micro Progress Indicator -->
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/miniProgress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="1000"
+            app:indicatorColor="?attr/colorPrimary"
+            app:trackColor="@android:color/transparent"
             app:trackCornerRadius="2dp"
             app:trackThickness="3dp" />
 
@@ -34,11 +38,11 @@
             android:orientation="horizontal"
             android:paddingHorizontal="12dp">
 
-            <!-- Artwork / Icon -->
+            <!-- Artwork Thumbnail -->
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                app:cardCornerRadius="8dp"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                app:cardCornerRadius="12dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
 
@@ -52,7 +56,7 @@
                     tools:ignore="ContentDescription" />
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Song Info -->
+            <!-- Metadata Info -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -75,6 +79,7 @@
                     android:id="@+id/miniSongArtist"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:textAppearance="?attr/textAppearanceBodySmall"
@@ -82,24 +87,24 @@
                     tools:text="Artist Name" />
             </LinearLayout>
 
-            <!-- Controls -->
+            <!-- Quick Action Controls -->
             <ImageButton
                 android:id="@+id/miniPlayPauseBtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/now_playing"
-                android:padding="8dp"
+                android:padding="10dp"
                 android:src="@drawable/ic_play"
-                app:tint="?attr/colorOnSurface" />
+                app:tint="?attr/colorPrimary" />
 
             <ImageButton
                 android:id="@+id/miniNextBtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/now_playing"
-                android:padding="8dp"
+                android:padding="10dp"
                 android:src="@drawable/ic_skip_next"
                 app:tint="?attr/colorOnSurface" />
         </LinearLayout>
