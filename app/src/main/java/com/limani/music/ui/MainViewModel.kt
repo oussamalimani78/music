@@ -134,4 +134,15 @@ class MainViewModelFactory(
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
+
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(
+        modelClass: Class<T>,
+        extras: androidx.lifecycle.viewmodel.CreationExtras
+    ): T {
+        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+            return MainViewModel(repository, playerController) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }

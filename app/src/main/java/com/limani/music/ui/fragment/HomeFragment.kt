@@ -13,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.limani.music.R
 import com.limani.music.data.model.Song
 import com.limani.music.ui.MainViewModel
@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
         val rvHomeSongs: RecyclerView = view.findViewById(R.id.rvHomeSongs)
         val emptyStateLayout: View = view.findViewById(R.id.emptyStateLayout)
         val txtSongCountHeader: TextView = view.findViewById(R.id.txtSongCountHeader)
-        val btnQuickPlay: MaterialButton = view.findViewById(R.id.btnQuickPlay)
+        val btnQuickPlay: FloatingActionButton = view.findViewById(R.id.btnQuickPlay)
 
         val emptyIcon: ImageView = emptyStateLayout.findViewById(R.id.imgEmptyIcon)
         val emptyTitle: TextView = emptyStateLayout.findViewById(R.id.txtEmptyTitle)
