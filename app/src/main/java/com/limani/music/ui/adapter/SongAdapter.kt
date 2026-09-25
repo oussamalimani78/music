@@ -42,18 +42,9 @@ class SongAdapter(
             txtArtistAlbum.text = "${song.artist} • ${song.album}"
             txtDuration.text = formatDuration(song.durationMs)
 
-            if (song.coverResId != null && song.coverResId != 0) {
-                imgAlbumArt.setImageResource(song.coverResId)
-                imgAlbumArt.clearColorFilter()
-            } else {
-                imgAlbumArt.setImageResource(R.drawable.ic_music_note)
-                imgAlbumArt.setColorFilter(
-                    com.google.android.material.color.MaterialColors.getColor(
-                        itemView,
-                        androidx.appcompat.R.attr.colorPrimary
-                    )
-                )
-            }
+            val coverRes = song.coverResId.takeIf { it != null && it != 0 } ?: R.drawable.default_album_art
+            imgAlbumArt.setImageResource(coverRes)
+            imgAlbumArt.clearColorFilter()
 
             val onSurfaceVariantColor = com.google.android.material.color.MaterialColors.getColor(
                 itemView,

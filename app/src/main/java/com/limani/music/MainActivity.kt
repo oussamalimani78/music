@@ -154,18 +154,9 @@ class MainActivity : AppCompatActivity() {
                             miniCard.visibility = View.VISIBLE
                             miniTitle.text = song.title
                             miniArtist.text = song.artist
-                            if (song.coverResId != null && song.coverResId != 0) {
-                                miniArtwork.setImageResource(song.coverResId)
-                                miniArtwork.clearColorFilter()
-                            } else {
-                                miniArtwork.setImageResource(R.drawable.ic_music_note)
-                                miniArtwork.setColorFilter(
-                                    com.google.android.material.color.MaterialColors.getColor(
-                                        miniArtwork,
-                                        androidx.appcompat.R.attr.colorPrimary
-                                    )
-                                )
-                            }
+                            val coverRes = song.coverResId.takeIf { it != null && it != 0 } ?: R.drawable.default_album_art
+                            miniArtwork.setImageResource(coverRes)
+                            miniArtwork.clearColorFilter()
                         } else {
                             miniCard.visibility = View.GONE
                         }

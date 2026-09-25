@@ -8,6 +8,7 @@ import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
+import com.limani.music.R
 import com.limani.music.data.model.Song
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -205,10 +206,14 @@ class PlayerController(private val context: Context) {
 
     private fun createMediaItem(song: Song): MediaItem {
         val uri = Uri.parse("android.resource://${context.packageName}/${song.rawResId}")
+        val coverRes = song.coverResId.takeIf { it != null && it != 0 } ?: R.drawable.default_album_art
+        val artworkUri = Uri.parse("android.resource://${context.packageName}/$coverRes")
+
         val metadata = MediaMetadata.Builder()
             .setTitle(song.title)
             .setArtist(song.artist)
             .setAlbumTitle(song.album)
+            .setArtworkUri(artworkUri)
             .build()
 
         return MediaItem.Builder()

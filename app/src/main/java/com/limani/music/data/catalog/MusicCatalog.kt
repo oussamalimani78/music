@@ -173,7 +173,7 @@ object MusicCatalog {
             album = albumName,
             durationMs = 0L,
             rawResId = rawResId,
-            coverResId = R.drawable.ic_music_note
+            coverResId = R.drawable.default_album_art
         )
     }
 
