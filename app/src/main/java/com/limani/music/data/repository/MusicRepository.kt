@@ -30,7 +30,7 @@ interface MusicRepository {
 
 class MusicRepositoryImpl(
     context: Context,
-    private val catalogSongs: List<Song> = MusicCatalog.getSongs()
+    private val catalogSongs: List<Song> = MusicCatalog.getSongs(context)
 ) : MusicRepository {
 
     private val prefs: SharedPreferences =
