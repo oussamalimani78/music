@@ -51,8 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_music_note"
-                    app:tint="?attr/colorPrimary"
+                    android:src="@drawable/default_album_art"
                     tools:ignore="ContentDescription" />
             </com.google.android.material.card.MaterialCardView>
 

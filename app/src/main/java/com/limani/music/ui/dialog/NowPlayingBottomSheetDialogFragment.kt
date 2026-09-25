@@ -93,18 +93,9 @@ class NowPlayingBottomSheetDialogFragment : BottomSheetDialogFragment() {
                         if (song != null) {
                             txtTitle.text = song.title
                             txtArtist.text = "${song.artist} • ${song.album}"
-                            if (song.coverResId != null && song.coverResId != 0) {
-                                imgArtwork.setImageResource(song.coverResId)
-                                imgArtwork.clearColorFilter()
-                            } else {
-                                imgArtwork.setImageResource(R.drawable.ic_music_note)
-                                imgArtwork.setColorFilter(
-                                    com.google.android.material.color.MaterialColors.getColor(
-                                        requireView(),
-                                        androidx.appcompat.R.attr.colorPrimary
-                                    )
-                                )
-                            }
+                            val coverRes = song.coverResId.takeIf { it != null && it != 0 } ?: R.drawable.default_album_art
+                            imgArtwork.setImageResource(coverRes)
+                            imgArtwork.clearColorFilter()
 
                             val onSurfaceVariantColor = com.google.android.material.color.MaterialColors.getColor(
                                 requireView(),
