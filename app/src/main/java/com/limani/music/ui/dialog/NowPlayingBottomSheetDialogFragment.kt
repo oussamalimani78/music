@@ -41,7 +41,11 @@ class NowPlayingBottomSheetDialogFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (dialog as? BottomSheetDialog)?.behavior?.state = BottomSheetBehavior.STATE_EXPANDED
+        (dialog as? BottomSheetDialog)?.let { bsd ->
+            bsd.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+            bsd.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+                ?.setBackgroundResource(android.R.color.transparent)
+        }
 
         val btnCollapse: ImageButton = view.findViewById(R.id.btnCollapse)
         val btnHeaderQueue: ImageButton = view.findViewById(R.id.btnHeaderQueue)
